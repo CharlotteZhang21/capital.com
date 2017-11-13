@@ -1,0 +1,211 @@
+/* Vungle IEC Template v2.0 */
+
+@charset "UTF-8";
+@font-face {
+    font-family: 'Roboto';
+    src: url('Roboto-Medium.eot');
+    src: url('Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Roboto-Medium.woff') format('woff'),
+        url('Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Weissenhof';
+    src: url('Weissenhof.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-image: none !important;
+    background-color: #1B1D28 !important;
+}
+
+
+/* GOOGLE LOGO */
+/* =Colors */
+body {
+  overflow: hidden;
+  touch-action: none; /*prevent mouse movement*/
+}
+
+button{
+    position: absolute;
+    margin: auto;
+    z-index: 5000;
+    width: 50vw;
+    height: 10vw;
+}
+
+/*
+|
+\
+[Template] 
+.template refers to all the elements that are structural
+CSS STARTS HERE:
+/
+|
+*/
+
+.finger {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  bottom: 0%;
+  transform: rotate(-20deg);
+  left: 8%;
+  right: auto;
+  opacity: 0;
+}
+
+.vungle-cta {
+  position: absolute;
+  bottom: 5vh;
+  left: 24vw;
+}
+
+.cta {
+  border-radius: 20px;
+  background-color: #1FDD66;
+  color: white;
+  font-size: 1em;
+  padding: 3vw 12vw;
+}
+
+#vungle-close {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#vungle-close.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/*header*/
+#header {
+  text-align: center;
+}
+
+#header img{
+  max-width: 300px;
+  width: 30vw;
+  margin: 12px 0;
+}
+
+/*chart*/
+
+.graphic{
+  z-index: 10000;
+}
+
+.bar {
+  fill: #359ACC;
+}
+
+
+.axis {
+  fill: white;
+}
+
+/**elements**/
+
+#chart{
+  height: 53vh;
+}
+
+.operatePanel{
+  display: inline-flex;
+  width: 100%;
+  background-color: #212430;
+  padding: 15px 0;
+}
+
+#sellBtn, #buyBtn {
+  height: 58px;
+  width: 38%;
+  margin: auto;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.8em;
+  padding: 7px;
+}
+
+#sellBtn {
+  background-color: #F15761;
+}
+
+#sellBtn p{
+  float: right;
+}
+
+#sellBtn:before {
+  content: "SELL";
+  color: #000;
+  font-size: .8em;
+  text-align: left;
+}
+
+#buyBtn {
+  background-color: #359ACC;
+  text-align: right;
+}
+
+#buyBtn p{
+  text-align: left;
+}
+
+
+#buyBtn:before {
+  content: "BUY";
+  color: #000;
+  font-size: .8em;
+}
+
+/*profit panel*/
+#profitPanel{
+  display: inline-flex;
+  width: 100%;
+  background-color: #212430;
+  padding: 10px 0;
+}
+
+.alert, .adjustment {
+  width: 10%;
+  margin: auto 0;
+  text-align: center;
+}
+
+.profit{
+  width: 80%;
+  background-color: #1A1C27;
+  border-radius: 24px;
+  border: 1px solid #32333D;
+  text-align: center;
+  font-weight: 300;
+  font-size: 1.8em;
+  color: white;
+}
+
+.profit:before {
+  content:"quantity";
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .4);
+  font-size: .8em;
+}
+
+/*tablet landscape*/
+
+@media (min-height:768px) and (orientation: portrait) {
+   
+
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+
+ 
+}
