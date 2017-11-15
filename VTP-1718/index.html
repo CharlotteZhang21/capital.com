@@ -13,6 +13,7 @@
     <script src="TweenMax.min.js"></script>
     <script src="TimelineMax.min.js"></script>
     <script src="d3.min.js"></script>
+    <script src="graphic.js"></script>
 
     <!-- logo strike start -->
     <style>#vungle-footer {display: none !important; }</style>
@@ -25,7 +26,7 @@
     <div id="vungle-header" class="portrait-light landscape-light">
         <a id="vungle-close" data-icon="i" href="javascript:void(0)" onclick="doSomething('close')"></a>
     </div>
-    <div id="vungle-footer" class="portrait-dark landscape-dark portrait-left landscape-left"><span class="footer" data-icon="q"></span></div>
+    <div id="vungle-footer" class="portrait-light landscape-light portrait-left landscape-right"><span class="footer" data-icon="q"></span></div>
 
     <!-- IEC Creative starts here-->
 
@@ -33,52 +34,58 @@
         <img src="logo.png">
     </div>
 
-    <div class="chart" id="chart">
+    <div id="main-content">
         
-        <div id="tooltip">
-        
+        <!--graphic Field-->
+        <div class="chart" id="chart">        
         </div>
-        
-    </div>
+        <!--end of graphic-->
 
-    <div class="operatePanel" id="operatePanel">
-        <div id="sellBtn">
-            <p id="sellNumber">7,506.6</p>
+        <!--interaction Field-->
+
+        <div id="interaction">
+
+            <div class="operatePanel" id="operatePanel">
+                <div id="tooltip">
+                
+                    <div class="interactive-finger">
+                        <div class="icon"></div>
+                        <div class="dot"></div>
+                    </div>
+                    
+                   
+                </div>
+                    <div id="sellBtn">
+                        <p id="sellNumber">7,506.6</p>
+                    </div>
+                    <div id="buyBtn">
+                        <p id="number">7,508.8</p>
+                    </div>
+                </div>
+
+                <div id="profitPanel">
+                    <!-- <div class="alert">
+                        <img src="alert.png">
+                    </div> -->
+
+                    <div class="profit">
+                        <p>0.1</p>
+                    </div>
+
+                   <!--  <div class="adjustment">
+                        <img src="price_alert.png">
+                    </div> -->
+                </div>
         </div>
-        <div id="buyBtn">
-            <p id="number">7,508.8</p>
-        </div>
-    </div>
-
-    <div id="profitPanel">
-        <div class="alert">
-            <img src="alert.png">
+        <!--end of interaction-->
+        <div class = "vungle-cta" id="vungle-cta">
+            <a href="javascript:void(0)" onclick="doSomething('download')" class="cta ">
+                <span>DOWNLOAD</span><span class="arrow" data-icon="j"></span>
+            </a>
         </div>
 
-        <div class="profit">
-            <p>0.1</p>
-        </div>
-
-        <div class="adjustment">
-            <img src="price_alert.png">
-        </div>
     </div>
-
-    <div id="tradingBtns">
-        
-    </div>
-
-    <div id="profitBar">
-        
-    </div>
-
-
-
-    <div class = "vungle-cta" id="vungle-cta">
-        <a href="javascript:void(0)" onclick="doSomething('download')" class="cta ">
-            <span>DOWNLOAD</span><span class="arrow" data-icon="j"></span>
-        </a>
-    </div>
+       
 
     <!-- <button id="goFS">Go fullscreen</button> -->
 
@@ -94,6 +101,8 @@
         var tooltip = document.getElementById("tooltip");
 
         var chart = document.getElementById("chart");
+
+
 
 
         function doSomething(s) {
@@ -117,282 +126,30 @@
 
         });
 
-        function initGraphic() {
-
-            //init height and width
-            var margin = {top: 0, right:0, bottom:0, left: 0};
-            var width = chart.clientWidth - margin.left - margin.right,
-                height = chart.clientHeight - margin.top - margin.bottom,
-                barWidth = 30;
-
-            var gridWidth = Math.ceil(width / barWidth),
-                gridHeight = 100;
-
-            //init data/label
-            var data = [
-                {
-                    "time": "10:00",
-                    "price": 501
-                }, 
-                {
-                    "time": "10:15",
-                    "price": 450
-                }, 
-                {
-                    "time": "10:30", 
-                    "price": 550
-                }, 
-                {
-                    "time": "10:45", 
-                    "price": 620
-                }, 
-                {
-                    "time": "11:00", 
-                    "price": 600
-                }, 
-                {
-                    "time": "11:30", 
-                    "price": 650
-                }];
-
-            //append svg to chart div
-            var svg = d3.select("#chart").append("svg")
-                .attr("class", "graphic")
-                 .attr("width", width + margin.left + margin.right)
-                 .attr("height", height + margin.top + margin.bottom);
-
-            // set the ranges
-            var x = d3.scaleTime().range([0, width]);
-            var y = d3.scaleLinear().range([height, 0]);
-
-            x.domain(data.map(function(d) {return d.time;}));
-            y.domain([0, d3.max(data, function(d) {return d.price})]);
-
-            var g = svg.append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            var gX = g.append("g")
-                .attr("class", "axis axis--x")
-                .attr("transform", "rotate(-90)")
-                .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x));;
-
-            var gY = g.append("g")
-                .attr("class", "axis axis--y")
-                .call(d3.axisLeft(y));
-                
-            gY.append("text")
-                .data(data.map(function(d) {return d.time}))
-                .attr("class", "axis-title")
-                .attr("transform", "rotate(-90)")
-                .attr("y", 6)
-                .attr("dy", ".71em")
-                .text("Change in Price");
-
-            var bars = g.selectAll(".bar")
-                .data(data)
-                .enter().append("rect")
-                .attr("class", "bar")
-                .attr("x", function(d, i) { return i*(width/barWidth)*5})
-                .attr("y", function(d, i) { return d.price/10})
-                .attr("width", barWidth)
-                .attr("height", function(d) { return d.price/10})
-                .append("line") // the line behind the rect
-                .attr("class", "bar")
-                .attr("x", function(d) {return 0})
-                .attr("y", function(d) {return 100})
-                .attr("width", 20)
-                .attr("height", function(d) {return d/6});
-
-
-            // var circles = svg.selectAll("circle")
-            //                .data(data)
-            //                .enter()
-            //                .append("circle");
-
-            // var circleAttributes = circles
-            //            .attr("cx", function (d) { return d; })
-            //            .attr("cy", function (d) { return d; })
-            //            .attr("r", 20 )
-            //            .style("fill", function(d) {
-            //              var returnColor;
-            //              if (d === 30) { returnColor = "green";
-            //              } else if (d === 70) { returnColor = "purple";
-            //              } else if (d === 110) { returnColor = "red"; }
-            //              return returnColor;
-            //            });
-
-        }
-
-
         document.body.addEventListener("touchstart", function(e){
-            console.log("need to play ");
             
             if(!tooltip.style.opacity)
                     hide(tooltip, 0);
-            showVungleCloseBtn();
             
-            if(storyNode < getStory().length){
-                // e.preventDefault();
-                if(playingFlag){
-                    clearTimeout(mytimer);
-                    updateChatBot();
-                }
-            }
-
         });
 
-    
-        // TweenMax animations library
-        function show(element, duration, dly) {
-            element.style.display = "block";
-            TweenLite.to(
-                element, duration,
-                {
-                    opacity: 1,
-                    delay: dly,
-                    ease: Quad.easeInOut,
-                });
-        }
+        document.getElementById("sellBtn").addEventListener("touchstart", function(e){
+            
+            console.log("fire");
+            
+        });
 
-        function up(element, duration, dly) {
-            TweenLite.to(
-                element, duration,
-                {
-                    delay: dly,
-                    transform: 'translate3d(0,-2vw,0)',
-                    ease: Quad.easeInOut,
-                    onComplete: function () {
-                        //
-                    }
-                });
-        }
-
-        function hide(element, delay) {
-            console.log(delay);
-            TweenLite.fromTo(
-                element, 1, {
-                    opacity: 1,
-                    x: 0
-                }, {
-                    opacity: 0,
-                    x: 100,
-                    delay: delay,
-                    ease: Quad.easeInOut,
-                    onComplete: function () {
-                        element.style.display = "none";
-                    }
-                });
-        }
-
-        function zoomOut(e, d) {
-            TweenLite.fromTo(
-                e, .6, {
-                    scale: 1.5
-                }, {
-                    scale: 1,
-                    delay: d,
-                    ease: Quad.easeInOut,
-                });
-        }
-
-        function zoomIn(e, d) {
-            TweenLite.fromTo(
-                e, .6, {
-                    scale: 1
-                }, {
-                    scale: 1.5,
-                    delay: d,
-                    ease: Quad.easeInOut,
-                });
-        }
-
-        function explode(e, d) {
-            TweenLite.fromTo(
-                e, .6, {
-                    scale: .5,
-                    opacity: 0
-                }, {
-                    scale: 1,
-                    opacity: 1,
-                    delay: d,
-                    ease: Expo.easeOut,
-                    onComplete: function () {
-                        hide(e, 0);
-                        zoomIn(e, 0);
-                    }
-                });
-        }
-
-        function moveUp(_e, _x = 125, _y = -400, _d, ani) {
-            var tl = new TimelineMax({
-                repeat:0,
-                onComplete:  function () {
-                    if(ani) {
-                        // document.getElementById("cta").classList += " end";
-                        pulse(_e, _d);
-                    }
-                }
-            });
-
-            tl.to(
-                _e, _d, {
-                    y: _y,
-                    x: _x,
-                    scale: 1.2,
-                    delay: .5,
-                    ease: Expo.easeInOut,
-                });
-        }
-
-        function handAni(e, duration, dly) {
-            var tl = new TimelineMax({
-                repeat: 2,
-                repeatDelay: .6,
-                delay: dly
-            });
-            tl.to(
-                e, .8, {
-                    y: 0                    
-                });
-            tl.to(
-                e, .6, {
-                    y: 10,
-                    ease: Expo.easeOut
-                });
-            tl.to(
-                e, .4, {
-                    y: 0,
-                    ease: Expo.easeOut
-                });
-            tl.to(
-                e, .4, {
-                    opacity: 0,
-                    ease: Expo.easeInOut
-                });
-        }
-
-
-        function pulse(e, d){
-
-            TweenMax.to(e, 1, {scale: 1.05, repeat:-1, yoyo:true});
-        }
 
         window.onresize = function () {
             console.log("resize");
-            repositionChatSpeechWrapper(.5);
+            initGraphic();
         };
         document.ontouchmove = function (e) {
             e.preventDefault();
         }
 
-        function isPortrait(){
-            return window.innerHeight > window.innerWidth;
-        }
 
-        function isLandscape() {
-            return window.innerWidth > window.innerHeight;
-        }
+        
 
     </script>
 </body>

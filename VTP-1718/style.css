@@ -51,15 +51,51 @@ CSS STARTS HERE:
 |
 */
 
-.finger {
+#tooltip {
   position: absolute;
   width: 55px;
   height: 55px;
-  bottom: 0%;
+
+  top: 0%;
   transform: rotate(-20deg);
   left: 8%;
   right: auto;
-  opacity: 0;
+  opacity: 1;
+  z-index: 9999;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQzLjQgMzk2LjkiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0My40IDM5Ni45IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMTcyLjEsMzk0LjhjMzUuNSwwLDI4LjktMzIsNDYtNjUuMmMxMi42LTI0LjUsMjAuOS00OC43LDIwLjktNjMuOGMwLTYuMiwwLTEzLjMsMC0yMC43aC0wLjJ2LTQ5LjZoMGMwLTEzLjEtMTAuNy0yMy43LTIzLjgtMjMuN2MtMTMuMSwwLTIzLjcsMTAuNi0yMy44LDIzLjdoMGwtMC4xLTMwLjZsMCwwdjBjMC05LjQtNS4zLTE4LjMtMTMuOS0yMS44Yy0xNy4yLTctMzMuNyw1LjUtMzMuNywyMS44YzAsMCwwLDAsMCwwbDAsMGwtMC4xLTE5LjFsMCwwdjBjMC05LjQtNS4zLTE4LjMtMTMuOS0yMS44Yy0xNy4yLTctMzMuNiw1LjUtMzMuNiwyMS44YzAsMCwwLDAsMCwwbDAsMHYwdi03LjF2LTAuNFY3MS40bDAtNDAuMmMwLTUuOC0xLjQtMTEuNi00LjgtMTYuM2MtMTYuNC0yMi41LTQ2LjMtOC00Ni4zLDEyLjZ2MTI4LjljMCwwLDAsMCwwLDBDMjQuMywxNTguOSwzLjksMTczLjQsMy45LDE5OWMwLDAsMCwyOS40LDAsNjMuNGMwLDE4LjcsMTUuNCw0Ni42LDMwLjgsNjkuOGMxNy4zLDI2LDE5LjEsNjIuMSw1MC4zLDYyLjFMMTcyLjEsMzk0Ljh6Ii8+PC9zdmc+);
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-animation: finger 1.4s ease-out;
+  -moz-animation: finger 1.4s ease-out;
+  animation: finger 1.4s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.dot{
+  border: 10px solid #ffffff;
+  padding: 8px 8px 8px 14px;
+  background: transparent;
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+  height: 55px;
+  width: 55px;
+  animation: dot 1.4s ease-out infinite;
+  -webkit-animation: dot 1.4s ease-out infinite;
+  -moz-animation: dot 1.4s ease-out infinite;
+}
+
+.pulse{
+  animation: pulse 1s ease-in-out infinite;
+  -webkit-animation: pulse 1s ease-in-out infinite;
+  -moz-animation: pulse 1s ease-in-out infinite;
+
 }
 
 .vungle-cta {
@@ -99,20 +135,32 @@ CSS STARTS HERE:
 
 /*chart*/
 
-.graphic{
-  z-index: 10000;
+.tick line{
+  stroke: rgba(255, 255, 255, .4);
+}
+.tick text{
+  fill: rgba(255, 255, 255, .4);
 }
 
-.bar {
-  fill: #359ACC;
+.grid line {
+  stroke: rgba(255, 255, 255, .4);;
+  stroke-opacity: 0.7;
+  /*shape-rendering: crispEdges;*/
 }
 
-
-.axis {
-  fill: white;
+.grid path {
+  stroke-width: 0;
 }
+
+.domain{
+  opacity: 0;
+}
+
 
 /**elements**/
+#main-content{
+  display: block;
+}
 
 #chart{
   height: 53vh;
@@ -135,18 +183,19 @@ CSS STARTS HERE:
   padding: 7px;
 }
 
+
 #sellBtn {
   background-color: #F15761;
 }
 
 #sellBtn p{
-  float: right;
+  text-align: right;
 }
 
 #sellBtn:before {
   content: "SELL";
   color: #000;
-  font-size: .8em;
+  font-size: .7em;
   text-align: left;
 }
 
@@ -163,7 +212,8 @@ CSS STARTS HERE:
 #buyBtn:before {
   content: "BUY";
   color: #000;
-  font-size: .8em;
+  font-size: .7em;
+  clear: both;
 }
 
 /*profit panel*/
@@ -174,14 +224,14 @@ CSS STARTS HERE:
   padding: 10px 0;
 }
 
-.alert, .adjustment {
+/*.alert, .adjustment {
   width: 10%;
   margin: auto 0;
   text-align: center;
-}
+}*/
 
 .profit{
-  width: 80%;
+  width: 100%;
   background-color: #1A1C27;
   border-radius: 24px;
   border: 1px solid #32333D;
@@ -192,10 +242,62 @@ CSS STARTS HERE:
 }
 
 .profit:before {
-  content:"quantity";
+  content:"profits";
   text-transform: uppercase;
   color: rgba(255, 255, 255, .4);
-  font-size: .8em;
+  font-size: .5em;
+  letter-spacing: .1em;
+}
+
+
+@media all and (orientation: landscape) {
+
+  .operatePanel {
+    display: inline-block;
+  }
+  #sellBtn, #buyBtn {
+    width: 84%;
+    margin: 5px 0;
+    font-size: 1em;
+    text-align: left;
+  }
+
+  #sellBtn p, #buyBtn p {
+    float: right;
+    font-size: 1.5em; 
+  }
+  #main-content{
+    display: inline-flex;
+    height: 70vh;
+  }
+
+  #chart{
+    width: 70vw;
+    height: 74vh;
+  }
+
+  #interaction{
+    width: 30vw;
+  }
+
+  #header{
+    position: absolute;
+    bottom: 0;
+    left: 17vw;
+  }
+
+  #header img{
+    margin: 7px 0;
+  }
+
+  .vungle-cta{
+    bottom: 5vh;
+    left: 54vw;
+  }
+
+  .cta {
+    padding: 2vw 5vw;
+  }
 }
 
 /*tablet landscape*/
@@ -208,4 +310,118 @@ CSS STARTS HERE:
 @media (min-width: 768px) and (orientation: landscape) {
 
  
+}
+
+/*animation*/
+
+@keyframes dot{
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.1);
+    opacity: 0.9;
+  }
+  75% {
+    transform: scale(0.4);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0.0;
+  }
+
+}
+
+@-moz-keyframes dot {
+  0% {
+    -moz-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -moz-transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    -moz-transform: scale(0.1);
+    opacity: 0.9;
+  }
+  75% {
+    -moz-transform: scale(0.4);
+    opacity: 0.5;
+  }
+  100% {
+    -moz-transform: scale(0.7);
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes "dot" {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.9;
+  }
+  75% {
+    -webkit-transform: scale(0.4);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: scale(0.7);
+    opacity: 0.0;
+  }
+}
+
+@keyframes pulse{
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes pulse{
+  0% {
+    -webkit-transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.4);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@-moz-keyframes pulse{
+  0% {
+    -moz-transform: scale(1);
+  }
+
+  50% {
+    -moz-transform: scale(1.4);
+  }
+
+  100% {
+    -moz-transform: scale(1);
+  }
 }
