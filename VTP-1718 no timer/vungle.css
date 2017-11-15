@@ -1,0 +1,498 @@
+/* Vungle IEC skeleton */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    line-height: 1;
+    background-size: cover;
+    background-image: url('bg.jpg');
+    background-position: center;
+}
+
+.preload * {
+    -webkit-animation-play-state: paused !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: sans-serif;
+}
+
+@charset "UTF-8";
+@font-face {
+    font-family: "vungle-fonticon";
+    src: url("vungle-fonticon.eot");
+    src: url("vungle-fonticon.eot?#iefix") format("embedded-opentype"), url("vungle-fonticon.woff") format("woff"), url("vungle-fonticon.ttf") format("truetype"), url("vungle-fonticon.svg#vungle-fonticon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[data-icon]:before {
+    font-family: "vungle-fonticon" !important;
+    content: attr(data-icon);
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="vungicon-"]:before,
+[class*=" vungicon-"]:before {
+    font-family: "vungle-fonticon" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.vungicon-arrow-back:before {
+    content: "a";
+}
+
+.vungicon-arrow-down:before {
+    content: "b";
+}
+
+.vungicon-arrow-forward:before {
+    content: "c";
+}
+
+.vungicon-arrow-up:before {
+    content: "d";
+}
+
+.vungicon-chevron-down:before {
+    content: "e";
+}
+
+.vungicon-chevron-left:before {
+    content: "f";
+}
+
+.vungicon-chevron-right:before {
+    content: "g";
+}
+
+.vungicon-chevron-up:before {
+    content: "h";
+}
+
+.vungicon-close:before {
+    content: "i";
+}
+
+.vungicon-download:before {
+    content: "j";
+}
+
+.vungicon-info:before {
+    content: "k";
+}
+
+.vungicon-replay:before {
+    content: "l";
+}
+
+.vungicon-security:before {
+    content: "m";
+}
+
+.vungicon-star-full:before {
+    content: "n";
+}
+
+.vungicon-star-half:before {
+    content: "o";
+}
+
+.vungicon-vungle-creative-labs:before {
+    content: "p";
+}
+
+.vungicon-vungle:before {
+    content: "q";
+}
+
+.vungicon-vungle-powered:before {
+    content: "r";
+}
+
+.vungicon-zoom-in:before {
+    content: "s";
+}
+
+.vungicon-zoom-out:before {
+    content: "t";
+}
+
+
+/* Portrait styling */
+
+#vungle-header {
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    z-index: 20000;
+}
+
+#vungle-header a {
+    font-size: 1.3em;
+    text-shadow: rgba(0, 0, 0, 0.37) 0 1px 2px;
+    -webkit-transition: color 0.05s ease-in-out;
+    z-index: 200000;
+}
+
+#vungle-header.portrait-light a {
+    color: #ffffff;
+    text-shadow: rgba(0, 0, 0, 0.37) 0 1px 2px;
+}
+
+#vungle-header.portrait-light a:active {
+    color: #b4b4b4;
+}
+
+#vungle-header.portrait-dark a {
+    color: rgba(126, 126, 126, 1);
+    text-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px;
+}
+
+#vungle-header.portrait-dark a:active {
+    color: rgba(54, 54, 54, 1);
+}
+
+#vungle-close {
+    padding: 15px;
+    right: 0;
+    position: absolute;
+}
+
+#vungle-footer {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    z-index: 9999;
+    width: 50px;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#vungle-footer span.footer {
+    font-size: 40px;
+    line-height: 20px;
+    display: block;
+    padding: 5px;
+}
+
+#vungle-footer.portrait-center {
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+#vungle-footer.portrait-left {
+    left: 5px;
+    right: auto;
+    text-align: left;
+}
+
+#vungle-footer.portrait-right {
+    left: auto;
+    right: 5px;
+    text-align: right;
+}
+
+#vungle-footer.portrait-light span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#vungle-footer.portrait-dark span {
+    color: rgba(126, 126, 126, 0.8);
+}
+
+
+/* Landscape styling */
+
+@media all and (orientation: landscape) {
+    #vungle-header.landscape-light a {
+        color: #ffffff;
+        text-shadow: rgba(0, 0, 0, 0.37) 0 1px 2px;
+    }
+    #vungle-header.landscape-light a:active {
+        color: #b4b4b4;
+    }
+    #vungle-header.landscape-dark a {
+        color: rgba(126, 126, 126, 1);
+        text-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px;
+    }
+    #vungle-header.landscape-dark a:active {
+        color: rgba(54, 54, 54, 1);
+    }
+    #vungle-footer.landscape-center {
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+    }
+    #vungle-footer.landscape-left {
+        left: 5px;
+        right: auto;
+        text-align: left;
+    }
+    #vungle-footer.landscape-right {
+        left: auto;
+        right: 5px;
+        text-align: right;
+    }
+    #vungle-footer.landscape-light span {
+        color: rgba(255, 255, 255, 0.8);
+        transform: translateZ(0px);
+        -webkit-transform: translateZ(0px);
+        -moz-transform: translateZ(0px);
+        -o-transform: translateZ(0px);
+        -ms-transform: translateZ(0px);
+    }
+    #vungle-footer.landscape-dark span {
+        color: rgba(126, 126, 126, 0.8);
+        transform: translateZ(0px);
+        -webkit-transform: translateZ(0px);
+        -moz-transform: translateZ(0px);
+        -o-transform: translateZ(0px);
+        -ms-transform: translateZ(0px);
+    }
+}
+
+
+/*HERE BE THE LIGHTBOX*/
+
+#vungle-lightbox {
+    font-family: 'roboto_condensedlight';
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2005;
+    /*    pointer-events: none;*/
+}
+
+#lightbox-close {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: all;
+    cursor: crosshair
+}
+
+#vungle-lightbox .client-logo {
+    position: relative;
+    width: 120px;
+    height: auto;
+    pointer-events: none;
+    border-radius: 15px;
+    padding-bottom: 5px;
+}
+
+#client-messaging p {
+    padding: 10px;
+    font-weight: 100;
+}
+
+#client-messaging p b {
+    font-weight: 400;
+}
+
+#client-messaging h3 {
+    font-weight: 600;
+}
+
+#client-messaging span {
+    color: #ffca00;
+}
+
+#client-messaging span.small {
+    color: #fff;
+    opacity: .7;
+    font-size: .8em;
+    top: -3px;
+    position: relative;
+}
+
+#vungle-lightbox #client-messaging {
+    position: relative;
+    width: 100%;
+    /*    font-size: 20px;*/
+    /*    line-height: 20px;*/
+    /*    height: 20px;*/
+    color: #fff;
+    top: calc(20vh);
+    pointer-events: none;
+}
+
+#vungle-lightbox .client-cta {
+    bottom: auto;
+    top: 45vh;
+    left: 0;
+    right: 0;
+}
+
+@media all and (orientation:landscape) {
+    #vungle-lightbox #client-messaging {
+        width: 100vw;
+        top: 20vh;
+        position: absolute;
+    }
+    #vungle-lightbox .client-cta {
+        /*        top: auto;*/
+    }
+}
+
+@media all and (max-height:320px) and (orientation:landscape) {
+    #vungle-lightbox #client-messaging p {
+        display: none;
+    }
+}
+
+@media all and (min-height:768px) and (orientation:landscape) {
+    #vungle-lightbox #client-messaging {
+        display: block;
+        top: 25vh;
+    }
+    #vungle-lightbox .client-cta {
+        top: 30vh;
+    }
+}
+
+@media all and (min-height:1000px) and (orientation:portrait) {
+    #vungle-lightbox #client-messaging {
+        display: block;
+        top: 30vh;
+    }
+    #vungle-lightbox .client-cta {
+        top: 25vh;
+    }
+}
+
+.endstar {
+    opacity: .5;
+}
+
+
+/* END */

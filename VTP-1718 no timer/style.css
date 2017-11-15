@@ -134,7 +134,7 @@ CSS STARTS HERE:
 }
 
 #vungle-close {
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
 }
 
