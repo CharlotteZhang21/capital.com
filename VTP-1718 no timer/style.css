@@ -272,6 +272,18 @@ CSS STARTS HERE:
   letter-spacing: .1em;
 }
 
+.warn{
+  position: absolute;
+  width: 100%;
+  font-size: 0.6em;
+  color: white;
+  opacity: .7;
+  text-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+  bottom: 0;
+  height: 15px;
+  left: 0;
+}
+
 
 /*animation*/
 
@@ -463,6 +475,9 @@ CSS STARTS HERE:
   .interactive-finger .icon{
     left: 130%;
     top: 63%;
+  }
+  .warn {
+    top: 0;
   }
 }
 
